@@ -13,23 +13,27 @@ class AnswerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_answer)
 
         val userAnswer = getIntent().getStringExtra("userAnswer")
-        val correctAnswer = getIntent().getStringExtra("correctAnswer")
+        val correctAnswer = getIntent().getIntExtra("correctAnswer", 0)
         val numCorrect = getIntent().getIntExtra("numCorrect", 0)
-        val totalQuestions = getIntent().getStringExtra("totalQuestions")
-        val questionNumber = getIntent().getIntExtra("questionNumber", 0)
-        val topic = getIntent().getStringExtra("topic")
+        val totalQuestions = getIntent().getIntExtra("totalQuestions", 0)
+        val questionNum = getIntent().getIntExtra("questionNumber", 0)
+        val topic = getIntent().getIntExtra("quizTopic", 0)
+
+        val topicChoice = QuizApp.repo.getTopic(topic)
+        val questionAnswer = QuizApp.repo.getQuiz(topic, questionNum).answers[correctAnswer]
+
 
         val youAnswered = findViewById<TextView>(R.id.userAnswer)
         youAnswered.setText(userAnswer)
         val correctAnswerIs = findViewById<TextView>(R.id.correctAnswer)
-        correctAnswerIs.setText(correctAnswer)
+        correctAnswerIs.setText(questionAnswer)
 
         val numOutOfNum = findViewById<TextView>(R.id.totalQuestionsCorrect)
         numOutOfNum.setText("You have $numCorrect out of $totalQuestions questions correct.")
 
         val nextButton = findViewById<Button>(R.id.nextOrFinishButton)
 
-        if ((questionNumber + 1).toString() == totalQuestions) {
+        if ((questionNum + 1) == totalQuestions) {
             nextButton.setText("Finish")
         }
 
@@ -40,7 +44,7 @@ class AnswerActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(this, QuizActivity::class.java)
                 intent.putExtra("numCorrect", numCorrect)
-                intent.putExtra("questionNumber", questionNumber + 1)
+                intent.putExtra("questionNumber", questionNum + 1)
                 intent.putExtra("quizTopic", topic)
                 startActivity(intent)
             }
