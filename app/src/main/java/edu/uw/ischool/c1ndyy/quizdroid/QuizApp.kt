@@ -29,7 +29,7 @@ interface TopicRepository {
 
 
 class TopicRepo(private val context: Context) : TopicRepository {
-    val jsonFile = context.assets.open("data/questions.json").bufferedReader().use{ it.readText() }
+    val jsonFile: String =  context.resources.openRawResource(R.raw.questions).bufferedReader().use { it.readText() }
     val jsonData: List<QuizApp.Topic> = Gson().fromJson(jsonFile, object : TypeToken<List<QuizApp.Topic>>() {}.type)
 
     override fun getTopicChoices(): List<QuizApp.Topic> {

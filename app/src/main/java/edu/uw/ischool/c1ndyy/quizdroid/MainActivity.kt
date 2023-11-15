@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -36,12 +38,43 @@ class MainActivity : AppCompatActivity() {
 
         quizView.adapter = TopicListAdapter(this, topics)
         quizView.setOnItemClickListener{ _, _, position, _ ->
-            val selectedItem = topics[position]
+            //val selectedItem = topics[position]
             val intent = Intent(this, OverviewActivity::class.java)
             intent.putExtra("quizTopic", position)
             startActivity(intent)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("OnResume()", "onResume called")
+
+        val urlPref = findViewById<TextView>(R.id.urlPref)
+        val minutePref = findViewById<TextView>(R.id.minutePref)
+
+        val urlInput = intent.getStringExtra("url")
+        val minuteInput = intent.getIntExtra("downloadMinute", 0)
+
+        if (!urlInput.isNullOrBlank()) {
+            urlPref.text = "URL: $urlInput"
+            minutePref.text = "Minute Increment: $minuteInput"
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.bar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.dropDown -> {
+                val intent = Intent(this, Preferences::class.java)
+                startActivity(intent)
+                true
+            } else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

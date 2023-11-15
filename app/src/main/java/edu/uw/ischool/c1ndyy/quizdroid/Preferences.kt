@@ -35,8 +35,8 @@ class Preferences : AppCompatActivity() {
             var minute = minuteInput.text.toString().toInt()
 
             val intent = Intent(this, MainActivity::class.java)
-            editor.putString("url", urlData)
-            editor.putInt("downloadMinute", minute)
+            intent.putExtra("url", urlData)
+            intent.putExtra("downloadMinute", minute)
             editor.commit()
             startActivity(intent)
             Toast.makeText(this, "Preference has been sumbitted.", Toast.LENGTH_LONG).show()

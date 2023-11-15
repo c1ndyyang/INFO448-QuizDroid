@@ -8,23 +8,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/prefBar"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="667dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <TextView
@@ -43,11 +32,11 @@
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="600dp"
+        android:layout_height="438dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="127dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="166dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +49,31 @@
             android:id="@+id/quizView"
             android:layout_width="match_parent"
             android:layout_height="196dp" />
+
+        <TextView
+            android:id="@+id/preferenceText"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:text="Preference Configuration:" />
+
+        <TextView
+            android:id="@+id/urlPref"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:text="URL: None" />
+
+        <TextView
+            android:id="@+id/minutePref"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:text="Minute Increment: None" />
     </LinearLayout>
+
 
 </RelativeLayout>
