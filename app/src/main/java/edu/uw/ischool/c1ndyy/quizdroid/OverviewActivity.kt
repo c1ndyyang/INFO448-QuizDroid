@@ -39,10 +39,10 @@ class OverviewActivity : AppCompatActivity() {
         var topicName = topicChoice
 
         val quizOverview = findViewById<TextView>(R.id.quizOverview)
-        quizOverview.setText("${topicChoice.longDesc}")
+        quizOverview.setText("${topicChoice.desc}")
 
         val numOverview = findViewById<TextView>(R.id.numQuestions)
-        numOverview.setText("Number of questions: ${topicChoice.quizzes.size}")
+        numOverview.setText("Number of questions: ${topicChoice.questions.size}")
 
         val beginButton = findViewById<Button>(R.id.beginButton)
         beginButton.setOnClickListener (View.OnClickListener {

@@ -6,12 +6,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val quizView = findViewById<ListView>(R.id.quizView)
+        val prefBar = findViewById<Toolbar>(R.id.prefBar)
+        setSupportActionBar(prefBar)
         // val names = arrayOf("Math", "Physics", "Marvel Super Heroes")
 
         val topics = QuizApp.repo.getTopicChoices()
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 }
 
 class TopicListAdapter(private val context: Context, private val topics: List<QuizApp.Topic>) : BaseAdapter() {
@@ -60,11 +65,12 @@ class TopicListAdapter(private val context: Context, private val topics: List<Qu
         val shortDescTextView = view.findViewById<TextView>(R.id.shortDescTextView)
 
         topicTextView.text = topic.title
-        shortDescTextView.text = topic.shortDesc
+        //shortDescTextView.text = topic.shortDesc
 
         return view
     }
 }
+
 
 
 

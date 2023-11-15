@@ -109,7 +109,7 @@ class QuizActivity : AppCompatActivity() {
 
         //render question
         val quizQuestion = findViewById<TextView>(R.id.quizQuestion)
-        val question = QuizApp.repo.getQuiz(topic, questionNum).question
+        val question = QuizApp.repo.getQuiz(topic, questionNum).text
         quizQuestion.setText("$question")
 
         var submitButton = findViewById<Button>(R.id.submitButton)
@@ -139,8 +139,8 @@ class QuizActivity : AppCompatActivity() {
         }
 
         submitButton.setOnClickListener (View.OnClickListener {
-            val correctAnswer = QuizApp.repo.getQuiz(topic, questionNum).correct
-            val totalQuestions = topicChoice.quizzes.size
+            val correctAnswer = QuizApp.repo.getQuiz(topic, questionNum).answer
+            val totalQuestions = topicChoice.questions.size
 
 
             if (userAnswer == QuizApp.repo.getQuiz(topic, questionNum).answers[correctAnswer]) {
