@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity() {
             urlPref.text = "URL: $urlInput"
             minutePref.text = "Minute Increment: $minuteInput"
         }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

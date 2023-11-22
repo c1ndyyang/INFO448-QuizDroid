@@ -2,9 +2,15 @@ package edu.uw.ischool.c1ndyy.quizdroid
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.WorkManager
 import java.io.FileReader
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import androidx.work.PeriodicWorkRequestBuilder
+import java.util.concurrent.TimeUnit
 
 class QuizApp : Application() {
     data class Quiz(val text: String, val answers: Array<String>, val answer: Int)
